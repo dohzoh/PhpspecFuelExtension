@@ -17,30 +17,26 @@ And install to use composer
 
 ```bash
 php composer.phar selfupdate
+php composer.phar run-script post-install-cmd
 php composer.phar config bin-dir "bin/"
 php composer.phar require dohzoh/phpspec-fuel dev-master
+php composer.phar require monolog/monolog 1.5.* # I don't know why remove on original composer.json
 ```
 
 **Configuration**
 
 ```yml
-#phpspec.yml
-extensions:
-    - PhpSpec\Fuelphp\Extension
+cp fuel/vendor/dohzoh/phpspec-fuel/phpspec.yml.dist phpspec.yml
 ```
 
 **Usage**
 
 ```
-bin/phpspec describe Controller_Index
+bin/phpspec describe Model_Blog
 ```
     
 ```
 bin/phpspec run
-```
-OR
-```
-bin/phpspec run -b public/index.php
 ```
 
 You specify the applicaiton root in phpspec.yml, for example:
