@@ -1,14 +1,13 @@
 <?php
 
 
-namespace PhpSpec\Kohana\Generator;
-
+namespace PhpSpec\Fuelphp\Generator;
 
 use PhpSpec\CodeGenerator\Generator\ClassGenerator;
-use PhpSpec\Kohana\Locator\PSR0Resource;
+use PhpSpec\Fuelphp\Locator\PSR0Resource;
 use PhpSpec\Locator\ResourceInterface;
 
-class KohanaCodeGenerator extends ClassGenerator
+class FuelphpCodeGenerator extends ClassGenerator
 {
 
     /**

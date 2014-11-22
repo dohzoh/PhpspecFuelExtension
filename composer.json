@@ -1,30 +1,33 @@
 {
-    "name": "phpspec/kohana-extension",
-    "description": "Kohana 3.0 extension for phpspec",
+    "name": "dohzoh/phpspec-fuel",
+    "description": "fuelphp1.x extension for phpspec",
     "type": "library",
-    "keywords": ["phpspec", "kohana"],
-    "homepage": "https://github.com/jon-acker/phpspec-kohana",
+    "keywords": ["phpspec", "fuelphp"],
+    "homepage": "https://github.com/dohzoh/PhpspecFuelExtension.git",
     "license": "MIT",
     "require": {
         "php": ">=5.3.3",
         "phpspec/phpspec": "~2.0"
     },
     "require-dev": {
+		"phpunit/phpunit": "4.*",
         "behat/behat": "*",
+		"squizlabs/php_codesniffer": "2.*",
         "bossa/phpspec2-expect": "dev-master"
     },
     "autoload": {
         "psr-0": {
-            "PhpSpec\\Kohana": "src/"
+            "PhpSpec\\Fuelphp": "src/"
         }
     },
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "dev",	
     "authors": [
         {
-            "name": "Jon Acker",
-            "email": "jacker@inviqa.com"
+            "name": "dozo",
+            "email": "dohzoh@outlook.com"
         }
     ]
 }

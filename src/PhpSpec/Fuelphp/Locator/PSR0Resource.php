@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSpec\Kohana\Locator;
+namespace PhpSpec\Fuelphp\Locator;
 
 use PhpSpec\Locator\ResourceInterface;
 

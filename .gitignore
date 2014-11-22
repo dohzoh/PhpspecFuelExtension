@@ -1,0 +1,10 @@
+*~
+pkg
+*.tgz
+*.phar
+composer.lock
+phpspec.yml
+/vendor
+/bin
+/fuel
+

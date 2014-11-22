@@ -1,35 +1,41 @@
-phpspec-kohana
+PhpspecFuelExtension
 ==============
 
-Extension for using PhpSpec with Kohana framework
+Extension for using PhpSpec with FuelPHP framework
 
-Create a composer.json file:
-```
-{
-    "require-dev": {
-        "phpspec/kohana-extension": "0.2.*"
-    },
-    "config": {
-        "bin-dir": "bin"
-    },
-    "autoload": {"psr-0": {"": "public/application/classes"}}
-}
+**Installation**
+
+```bash
+php composer.phar config bin-dir "bin/"
+php composer.phar require dohzoh/phpspec-fuel dev-master
 ```
 
-```
-cp vendor/phpspec/kohana-extension/phpspec.yml.dist phpspec.yml
+**Configuration**
+
+```yml
+#phpspec.yml
+extensions:
+    - PhpSpec\Fuelphp\Extension
 ```
 
+**Usage**
+
 ```
-bin/phpspec describe Acme_Driver_Formatter
+bin/phpspec describe Controller_Index
 ```
 
 ```
 bin/phpspec run
 ```
+OR
+```
+bin/phpspec run -b public/index.php
+```
+
 You specify the applicaiton root in phpspec.yml, for example:
 ```
-application_root: public/application
+src_path: fuel/app
+spec_path: fuel/app/tests
 ```
 This will usually match the path you set for your composer autoload to search for classes.
 

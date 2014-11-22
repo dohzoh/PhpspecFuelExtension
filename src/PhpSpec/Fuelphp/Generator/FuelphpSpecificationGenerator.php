@@ -1,12 +1,12 @@
 <?php
 
-namespace PhpSpec\Kohana\Generator;
+namespace PhpSpec\Fuelphp\Generator;
 
 use PhpSpec\CodeGenerator\Generator\SpecificationGenerator;
-use PhpSpec\Kohana\Locator\PSR0Resource;
+use PhpSpec\Fuelphp\Locator\PSR0Resource;
 use PhpSpec\Locator\ResourceInterface;
 
-class KohanaSpecificationGenerator extends SpecificationGenerator
+class FuelphpSpecificationGenerator extends SpecificationGenerator
 {
 
     /**

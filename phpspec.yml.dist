@@ -1,4 +1,11 @@
-application_root: application
+src_path: fuel/app
+spec_path: fuel/app/tests
+
+modules:
+  mymod:
+    namespace: My
+    spec_path: ~
+    src_path: ~
 
 extensions:
-    - PhpSpec\Kohana\Extension
+    - PhpSpec\Fuelphp\Extension
