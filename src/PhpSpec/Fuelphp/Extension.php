@@ -8,11 +8,13 @@ use PhpSpec\Fuelphp\Generator\FuelphpGenerator;
 use PhpSpec\Fuelphp\Generator\FuelphpSpecificationGenerator;
 use PhpSpec\Fuelphp\Locator\PSR0Locator;
 use PhpSpec\ServiceContainer;
+use PHPUnit_Util_Configuration;
 
 class Extension implements ExtensionInterface
 {
-	const DEFAULTPATH_SRC = "fuel/app";
-	const DEFAULTPATH_SPEC = "fuel/app/tests";
+    const DEFAULTPATH_SRC = "fuel/app";
+    const DEFAULTPATH_SPEC = "fuel/app/tests";
+    const DEFAULTPATH_PHPUNITXML = "fuel/core/phpunit.xml";
     /**
      *
      * @param \PhpSpec\ServiceContainer $container
@@ -20,6 +22,7 @@ class Extension implements ExtensionInterface
      */
     public function load(ServiceContainer $container)
     {
+        self::loadPhpunitConfiguration($container);
 
         $container->addConfigurator(function($c) {
             $c->setShared(
@@ -45,5 +48,28 @@ class Extension implements ExtensionInterface
                 $c->get('code_generator.templates')
             );
         });
+    }
+
+    /**
+     * set global fuel setting
+     *  $_SERVER[
+     *   [doc_root] => ../../
+     *   [app_path] => fuel/app
+     *   [core_path] => fuel/core
+     *   [package_path] => fuel/packages
+     *   [vendor_path] => fuel/vendor
+     *   [FUEL_ENV] => test
+     *  ]
+     * and
+     * load bootstrap;
+     * @param ServiceContainer $container
+     */
+    protected function loadPhpunitConfiguration(ServiceContainer $container)
+    {
+        $file = $container->getParam('phpunit.xml', self::DEFAULTPATH_PHPUNITXML);
+        $config = PHPUnit_Util_Configuration::getInstance($file);
+        $config->handlePHPConfiguration();
+        $configures = $config->getPHPUnitConfiguration();
+        @include_once($configures['bootstrap']);
     }
 }
