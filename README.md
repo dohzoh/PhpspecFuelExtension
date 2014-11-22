@@ -23,7 +23,7 @@ php composer.phar require dohzoh/phpspec-fuel dev-master
 php composer.phar require monolog/monolog 1.5.* # I don't know why remove on original composer.json
 ```
 
-**Configuration**
+**Setting**
 
 ```yml
 cp fuel/vendor/dohzoh/phpspec-fuel/phpspec.yml.dist phpspec.yml
@@ -38,6 +38,8 @@ bin/phpspec describe Model_Blog
 ```
 bin/phpspec run
 ```
+
+**Configuration**
 
 You specify the applicaiton root in phpspec.yml, for example:
 ```
