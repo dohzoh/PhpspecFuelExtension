@@ -8,17 +8,28 @@
     "require": {
         "php": ">=5.3.3",
         "phpunit/phpunit": "3.7.*",
-        "phpspec/phpspec": "~2.0"
+        "phpspec/phpspec": "~2.0",
+        "monolog/monolog": "1.5.*"
     },
     "require-dev": {
-        "behat/behat": "*",
-		"squizlabs/php_codesniffer": "2.*",
+        "behat/behat": "dev-master",
+		"squizlabs/php_codesniffer": "dev-phpcs-fixer",
+        "fuel/core": "1.7.2",
         "bossa/phpspec2-expect": "dev-master"
     },
     "autoload": {
         "psr-0": {
             "PhpSpec\\Fuelphp": "src/"
         }
+    },
+    "autoload-dev":{
+        "classmap":[
+            "vendor/behat/behat/features/bootstrap/FeatureContext.php",
+            "vendor/phpspec/phpspec/features/bootstrap/PhpSpecContext.php",
+            "vendor/phpspec/phpspec/features/bootstrap/Console",
+            "vendor/fuel/core",
+            "vendor/fuel/core/classes"
+        ]
     },
     "config": {
         "bin-dir": "bin"
@@ -28,6 +39,25 @@
         {
             "name": "dozo",
             "email": "dohzoh@outlook.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "fuel/core",
+                "type": "fuel-package",
+                "version": "1.7.2",
+                "dist": {
+                    "url": "https://github.com/fuel/core/archive/1.7/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/fuel/core.git",
+                    "type": "git",
+                    "reference": "1.8/develop"
+                }
+            }
         }
     ]
 }
