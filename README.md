@@ -18,7 +18,6 @@ And install to use composer
 ```bash
 php composer.phar config bin-dir "bin/"
 php composer.phar require dohzoh/phpspec-fuel dev-master --prefer-dist
-php composer.phar require monolog/monolog 1.5.* # I don't know why remove on original composer.json
 ```
 
 **Setting**

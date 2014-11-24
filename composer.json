@@ -8,7 +8,8 @@
     "require": {
         "php": ">=5.3.3",
         "phpunit/phpunit": "3.7.*",
-        "phpspec/phpspec": "~2.0"
+        "phpspec/phpspec": "~2.0",
+        "monolog/monolog": "1.5.*"
     },
     "require-dev": {
         "behat/behat": "dev-master",
