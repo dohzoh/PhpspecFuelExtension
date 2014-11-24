@@ -66,10 +66,15 @@ class Extension implements ExtensionInterface
      */
     protected function loadPhpunitConfiguration(ServiceContainer $container)
     {
-        $file = $container->getParam('phpunit.xml', self::DEFAULTPATH_PHPUNITXML);
-        $config = PHPUnit_Util_Configuration::getInstance($file);
-        $config->handlePHPConfiguration();
-        $configures = $config->getPHPUnitConfiguration();
-        @include_once($configures['bootstrap']);
+        try{
+            $file = $container->getParam('phpunit.xml', self::DEFAULTPATH_PHPUNITXML);
+            $config = PHPUnit_Util_Configuration::getInstance($file);
+            $config->handlePHPConfiguration();
+            $configures = $config->getPHPUnitConfiguration();
+            if(file_exists($configures['bootstrap']))
+                include_once($configures['bootstrap']);
+        }catch (\Exception $e){
+            echo "can't find phpunit.xml\n";
+        }
     }
 }

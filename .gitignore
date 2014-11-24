@@ -7,4 +7,5 @@ phpspec.yml
 /vendor
 /bin
 /fuel
-
+/bin
+/spec

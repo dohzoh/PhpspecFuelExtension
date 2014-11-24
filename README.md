@@ -19,8 +19,7 @@ And install to use composer
 php composer.phar selfupdate
 php composer.phar run-script post-install-cmd
 php composer.phar config bin-dir "bin/"
-php composer.phar require dohzoh/phpspec-fuel dev-master
-php composer.phar require monolog/monolog 1.5.* # I don't know why remove on original composer.json
+php composer.phar require dohzoh/phpspec-fuel dev-master --prefer-dist
 ```
 
 **Setting**
