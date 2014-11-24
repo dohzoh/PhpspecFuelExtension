@@ -45,7 +45,7 @@ class FuelphpSpecificationGenerator extends SpecificationGenerator
     protected function renderTemplate(ResourceInterface $resource, $filepath)
     {
         $controller = <<<CONTROLLER
-    function let(Request \$request, Response \$response){
+    function let(\Fuel\Core\Request \$request, \Fuel\Core\Response \$response){
         \$this->beConstructedWith(\$request, \$response);
     }
 

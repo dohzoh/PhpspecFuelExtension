@@ -65,7 +65,7 @@ Feature: Developer generates a spec
 
       """
     When I start describing the "markdown" class
-    Then a new spec should be generated in the "fuel/app/tests/spec/markdownSpec.php":
+    And a new spec should be generated in the "fuel/app/tests/spec/markdownSpec.php":
       """
       <?php
 
@@ -78,6 +78,60 @@ Feature: Developer generates a spec
           {
               $this->shouldHaveType('markdown');
           }
+      }
+
+      """
+    And I run phpspec and answer "y" when asked if I want to generate the code
+    Then a new class should be generated in the "fuel/app/classes/Markdown.php":
+      """
+      <?php
+
+      class markdown
+      {
+      }
+
+      """
+
+
+  Scenario: Generating a spec with configuration
+    Given the config file contains:
+      """
+      src_path: fuel/app
+      spec_path: fuel/app/tests
+      phpunit.xml: fuel/core/phpunit.xml
+
+      extensions:
+        - PhpSpec\Fuelphp\Extension
+
+      """
+
+    When I start describing the "Controller_Markdown" class
+    Then a new spec should be generated in the "fuel/app/tests/spec/controller/markdownSpec.php":
+      """
+      <?php
+
+      use PhpSpec\ObjectBehavior;
+
+      class Controller_MarkdownSpec extends ObjectBehavior
+      {
+          function let(\Fuel\Core\Request $request, \Fuel\Core\Response $response){
+              $this->beConstructedWith($request, $response);
+          }
+
+          function it_is_initializable()
+          {
+              $this->shouldHaveType('Controller_Markdown');
+          }
+      }
+
+      """
+    And I run phpspec and answer "y" when asked if I want to generate the code
+    Then a new class should be generated in the "fuel/app/classes/controller/Markdown.php":
+      """
+      <?php
+
+      class Controller_Markdown
+      {
       }
 
       """
