@@ -64,7 +64,7 @@ class PSR0Locator implements ResourceLocatorInterface
         $fullSpecPath = $this->getFullSpecPath();
 
         $resources = $this->createResourcesFromSpecFiles($fullSpecPath);
-
+print_r($resources);
         return $resources;
     }
 
@@ -93,6 +93,7 @@ class PSR0Locator implements ResourceLocatorInterface
      */
     public function findResources($query)
     {
+echo __METHOD__."$query\n";
         $fullQueryPath = realpath($query);
 
         $fullSpecPath = $this->getFullSpecPath();
@@ -125,6 +126,8 @@ class PSR0Locator implements ResourceLocatorInterface
      */
     public function createResource($classname)
     {
+echo __METHOD__."($classname);".$this->srcNamespace."\n";
+        $classname = $this->srcNamespace.'\\'.$classname;
         $namespaces = explode('\\', $classname);
         $classname = $namespaces[count($namespaces)-1];
 //        $namespaces = implode('\\', $classname);

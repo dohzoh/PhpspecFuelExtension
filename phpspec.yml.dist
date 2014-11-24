@@ -3,7 +3,7 @@ spec_path: fuel/app/tests
 phpunit.xml: fuel/core/phpunit.xml
 
 modules:
-  mymod:
+  my:
     namespace: My
     spec_path: fuel/app/tests
     src_path: fuel/app/modules/

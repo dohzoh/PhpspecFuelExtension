@@ -22,18 +22,8 @@ class Extension implements ExtensionInterface
      */
     public function load(ServiceContainer $container)
     {
+echo __METHOD__."()\n";
         self::loadPhpunitConfiguration($container);
-
-        $container->addConfigurator(function($c) {
-            $c->setShared(
-                'locator.locators.kohana_locator',
-                function($c) {
-                    $srcPath = $c->getParam('src_path', self::DEFAULTPATH_SRC);
-                    $specPath = $c->getParam('spec_path', self::DEFAULTPATH_SPEC);
-                    return new PSR0Locator(null, null, $srcPath . '/classes/', $specPath . '/spec/');
-                }
-            );
-        });
 
         $container->addConfigurator(function (ServiceContainer $c) {
             $suites = $c->getParam('modules', array('main' => ''));
@@ -53,7 +43,7 @@ class Extension implements ExtensionInterface
                     mkdir($specPath, 0777, true);
                 }
 
-                $c->set(sprintf('locator.locators.%s_module', $name),
+                $c->set(sprintf('locator.locators.%s', $name),
                     function () use ($srcNS, $specPrefix, $srcPath, $specPath) {
                         return new PSR0Locator($srcNS, null, $srcPath . strtolower($srcNS). '/classes/', $specPath . '/spec/');
                     }

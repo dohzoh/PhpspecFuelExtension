@@ -29,6 +29,7 @@ class PSR0Resource implements ResourceInterface
      */
     public function __construct(array $namespaceParts, PSR0Locator $locator, $specifiedClass)
     {
+echo new \Exception();
         $this->parts   = $namespaceParts;
         $this->locator = $locator;
         $this->specifiedClass = $specifiedClass;
