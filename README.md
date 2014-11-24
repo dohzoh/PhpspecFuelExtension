@@ -16,6 +16,8 @@ cd fuelphp-1.7.2
 And install to use composer
 
 ```bash
+php composer.phar selfupdate
+php composer.phar run-script post-install-cmd
 php composer.phar config bin-dir "bin/"
 php composer.phar require dohzoh/phpspec-fuel dev-master --prefer-dist
 ```
