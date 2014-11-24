@@ -5,8 +5,13 @@ phpunit.xml: fuel/core/phpunit.xml
 modules:
   mymod:
     namespace: My
-    spec_path: ~
-    src_path: ~
+    spec_path: fuel/app/tests
+    src_path: fuel/app/modules/
+
+#suites:
+#  acme_suite:
+#    namespace: Acme\TheLib
+#    spec_prefix: acme_spec
 
 extensions:
     - PhpSpec\Fuelphp\Extension

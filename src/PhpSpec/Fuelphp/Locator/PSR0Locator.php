@@ -113,7 +113,7 @@ class PSR0Locator implements ResourceLocatorInterface
      */
     public function supportsClass($classname)
     {
-        $isSupported = preg_match('/^(([a-zA-Z0-9]+)_?)+$/', $classname);
+        $isSupported = preg_match('!^(([a-zA-Z0-9\\\\]+)_?)+$!', $classname);
 
         return $isSupported;
     }
@@ -125,11 +125,15 @@ class PSR0Locator implements ResourceLocatorInterface
      */
     public function createResource($classname)
     {
+        $namespaces = explode('\\', $classname);
+        $classname = $namespaces[count($namespaces)-1];
+//        $namespaces = implode('\\', $classname);
+
         $parts = array_map(function($part) {
             return strtolower($part);
         }, preg_split('/_/', $classname));
 
-        return new PSR0Resource($parts, $this, $classname);
+        return new PSR0Resource($namespaces, $this, $classname);
     }
 
     /**

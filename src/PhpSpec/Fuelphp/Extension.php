@@ -35,6 +35,32 @@ class Extension implements ExtensionInterface
             );
         });
 
+        $container->addConfigurator(function (ServiceContainer $c) {
+            $suites = $c->getParam('modules', array('main' => ''));
+
+            foreach ($suites as $name => $suite) {
+//print_r($suite);
+                $suite      = is_array($suite) ? $suite : array('namespace' => $suite);
+                $srcNS      = isset($suite['namespace']) ? $suite['namespace'] : '';
+                $specPrefix = isset($suite['spec_prefix']) ? $suite['spec_prefix'] : 'spec';
+                $srcPath    = isset($suite['src_path']) ? $suite['src_path'] : 'src';
+                $specPath   = isset($suite['spec_path']) ? $suite['spec_path'] : '.';
+
+                if (!is_dir($srcPath)) {
+                    mkdir($srcPath, 0777, true);
+                }
+                if (!is_dir($specPath)) {
+                    mkdir($specPath, 0777, true);
+                }
+
+                $c->set(sprintf('locator.locators.%s_module', $name),
+                    function () use ($srcNS, $specPrefix, $srcPath, $specPath) {
+                        return new PSR0Locator($srcNS, null, $srcPath . strtolower($srcNS). '/classes/', $specPath . '/spec/');
+                    }
+                );
+            }
+        });
+
         $container->setShared('code_generator.generators.kohana_class', function ($c) {
             return new FuelphpCodeGenerator(
                 $c->get('console.io'),
