@@ -1,0 +1,24 @@
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features
+      contexts:
+        - FeatureContext
+        - PhpSpecContext
+        - Behat\MinkExtension\Context\MinkContext
+        - behatch:browser: # ←ここ追加
+        - behatch:debug: # ←ここ追加
+        # - behatch:json: # ←ここ追加
+        # - behatch:rest # ←ここ追加
+        - behatch:system: # ←ここ追加
+        # - behatch:table # ←ここ追加
+        # - behatch:xml # ←ここ追加
+
+  extensions:
+    Sanpi\Behatch\Extension: ~
+    Behat\MinkExtension:
+      sessions:
+        goutte:
+          goutte: ~
+

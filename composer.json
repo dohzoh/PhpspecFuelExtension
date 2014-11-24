@@ -19,6 +19,11 @@
         "psr-0": {
             "PhpSpec\\Fuelphp": "src/"
         }
+        , "classmap":[
+            "./vendor/behat/behat/features/bootstrap/FeatureContext.php",
+            "./vendor/phpspec/phpspec/features/bootstrap/PhpSpecContext.php",
+            "./vendor/phpspec/phpspec/features/bootstrap/Console"
+        ]
     },
     "config": {
         "bin-dir": "bin"
