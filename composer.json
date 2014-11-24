@@ -20,12 +20,14 @@
         "psr-0": {
             "PhpSpec\\Fuelphp": "src/"
         }
-        , "classmap":[
-            "./vendor/behat/behat/features/bootstrap/FeatureContext.php",
-            "./vendor/phpspec/phpspec/features/bootstrap/PhpSpecContext.php",
-            "./vendor/phpspec/phpspec/features/bootstrap/Console",
-            "./vendor/fuel/core",
-            "./vendor/fuel/core/classes"
+    },
+    "autoload-dev":{
+        "classmap":[
+            "vendor/behat/behat/features/bootstrap/FeatureContext.php",
+            "vendor/phpspec/phpspec/features/bootstrap/PhpSpecContext.php",
+            "vendor/phpspec/phpspec/features/bootstrap/Console",
+            "vendor/fuel/core",
+            "vendor/fuel/core/classes"
         ]
     },
     "config": {
