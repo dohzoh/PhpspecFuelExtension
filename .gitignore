@@ -8,3 +8,4 @@ phpspec.yml
 /bin
 /fuel
 /bin
+/spec
